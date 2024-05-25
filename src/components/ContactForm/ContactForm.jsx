@@ -5,15 +5,11 @@ import { ErrorMessage } from "formik"
 import { useDispatch } from "react-redux"
 
 import css from './ContactForm.module.css'
-import { addContact } from '../../redux/contactsSlice';
-
-// import { useSelector } from "react-redux"
-// import { getContacts } from "../../redux/selectors"
+// import { addContact } from '../../redux/contactsSlice';
+import {addContact} from '../../redux/contactsOps'
 
 
 export default function ContactForm() {
-    //  const items = useSelector(getContacts)
-    // console.log(items)
     const nameId = useId()
     const telId = useId()
     const itemId = Math.random()
@@ -26,7 +22,7 @@ export default function ContactForm() {
     function submitHandler(values, actions) {
         values.id = itemId
         // console.log(values.number, values.name)
-        dispatch(addContact({name: values.name, number: values.number}))
+        dispatch(addContact({ name: values.name, number: values.number }))
         actions.resetForm()
 
     }
