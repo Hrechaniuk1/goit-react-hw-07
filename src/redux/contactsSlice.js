@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { addContact, getContacts, deleteContact } from './contactsOps'
+import { addContact, fetchContacts, deleteContact } from './contactsOps'
 
 function errorHandler(state, action) {
     state.error = action.payload
@@ -19,13 +19,13 @@ const contactsSlice = createSlice({
     },
     extraReducers: builder => {
         builder
-            .addCase(getContacts.pending, loadingHandler)
-            .addCase(getContacts.fulfilled, (state, action) => {
+            .addCase(fetchContacts.pending, loadingHandler)
+            .addCase(fetchContacts.fulfilled, (state, action) => {
                 state.error = null
                 state.loading = false
                 state.items = action.payload
             })
-            .addCase(getContacts.rejected, errorHandler)
+            .addCase(fetchContacts.rejected, errorHandler)
             // 
             .addCase(addContact.pending, loadingHandler)
             .addCase(addContact.fulfilled, (state, action) => {

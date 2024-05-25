@@ -7,7 +7,7 @@ import SearchBox from './SearchBox/SearchBox'
 import ContactForm from './ContactForm/ContactForm'
 import ContactList from './ContactList/ContactList'
 import { selectError, selectLoading } from '../redux/selectors'
-import {getContacts} from '../redux/contactsOps'
+import {fetchContacts} from '../redux/contactsOps'
 
 // ------
 
@@ -17,7 +17,7 @@ export default function App() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getContacts())
+        dispatch(fetchContacts())
     }, [dispatch])
 
 
